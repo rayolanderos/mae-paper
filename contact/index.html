@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://getbootstrap.com/examples/justified-nav/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../favicon.png">
+
+    <title>M&auml;e Journal - Contact</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../demo/css/font-awesome.min.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="../css/styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../js/ie-emulation-modes-warning.js"></script>
+    <script src="../js/contact.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- The justified navigation menu is meant for single line per list item.
+           Multiple lines will require custom code not provided by Bootstrap. -->
+      <div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            <li ><a href="http://maejournal.com">Home</a></li>
+            <li><a href="http://maejournal.com/demo">Demo</a></li>
+            <li class="active"><a href="http://maejournal.com/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Mäe: </h1>
+        <p class="lead">A PPD-Screening Journal for New Mothers Using Amazon Echo</p>
+        <p> EE382V-SE Project (Fall 2016) </p>
+      </div>
+      <div class="contact-container">
+        <div class="container">
+
+          <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+            <fieldset>
+
+              <!-- Form Name -->
+              <legend>Have questions about M&auml;e? Drop us a message!</legend>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-2 control-label">Name</label>  
+                <div class="col-md-10 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input  name="first_name" placeholder="Name" class="form-control"  type="text">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-2 control-label">E-Mail</label>  
+                <div class="col-md-10 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text area --> 
+              <div class="form-group">
+                <label class="col-md-2 control-label">Message</label>
+                <div class="col-md-10 inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon txt"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <textarea class="form-control" name="comment" placeholder="Your Message" rows="4"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Success message -->
+              <div class="alert alert-success" role="alert" id="success_message">Success <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-8 control-label"></label>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-success btn-lg" >Send <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                </div>
+              </div>
+
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <!-- Example row of columns -->
+      
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p> 2016 - University of Texas at Austin </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+  </body>
+</html>
