@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://getbootstrap.com/examples/justified-nav/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="./favicon.png">
+
+    <title>Implementation Details</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../js/ie-emulation-modes-warning.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- The justified navigation menu is meant for single line per list item.
+           Multiple lines will require custom code not provided by Bootstrap. -->
+      <div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            <li class="active"><a href="http://maejournal.com">Home</a></li>
+            <li><a href="http://maejournal.com/demo">Demo</a></li>
+            <li><a href="http://maejournal.com/contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="content-container">
+          <h2>Source code</h2>
+          <p>You can access the code for the Mae application from the following locations:</p>
+          <ul>
+              <li><a href="https://github.com/bethrichardson/mae-be">Mae Backend and Lambda</a></li>
+              <li><a href="https://docs.google.com/document/d/1Sklh4iNMu4IeiksuiZgobqrAQaKT5ds0DbjvmuynPlc/edit?usp=sharing">Review an overview of the API calls for the backend</a></li>
+              <li><a href="https://github.com/rayolanderos/mae-ui">Mae UI</a></li>
+          </ul>
+          <h2>How Mae Understands Personality</h2>
+          <p>Journals containing text are sent to <a target="_blank" href="https://www.ibm.com/watson/developercloud/personality-insights.html">IBM Watson Personality Insights</a>
+              API to analyze personality and current needs, which feeds the Mäe advice engine.
+              With each new text journal, Mae calculates the user's mood for the past two weeks worth of
+              journals and compares that mood to the baseline for the first two weeks of use for that user.
+              When a mother shows is outside one standard deviation from their normal levels of any of
+              the six critical personality traits that make up
+              <a target="_blank" href="https://www.ibm.com/watson/developercloud/doc/personality-insights/models.shtml#emotionalRange">Emotional Range</a>
+              (anger, depression, immoderation, vulnerability, anxiety, and self-consciousness),
+              the user is notified that they are showing signs of that train. When the user is
+              outside two standard deviations of any of the traits, the user is advised to seek
+            the assistance of a trusted care-giver to assess their current state. </p>
+
+          <h3>How Mae Provides User-Specific Advice</h3>
+          <p>IBM Watson Personality Insights provides an assessment of the
+              <a target="_blank" href="https://www.ibm.com/watson/developercloud/doc/personality-insights/models.shtml#outputNeeds">user's current greatest needs</a>
+              when analyzing the user's journals. From these needs, Mae calculates the current greatest need for the user and provides randomized advice based on this need.
+              For example, if the user's current greatest need is "love" advice might be returned to reach out for a cuddle with a loved one. If the user's
+              current greatest need is "liberty" advice might be returned to take some time for themselves or to look for ways to deviate from the normal routine.
+              In this way Mae provides up-to-date, personalized advice for each user.
+
+              Mae also features the ability to request random advice without analyzing or reviewing journals or having knowledge of the user.
+              This feature provides added support to new mothers who can use all the support they can get.
+          </p>
+
+              <h3>Health Care Reports</h3>
+          <p>A convenient health care report provides health care providers with details for assessing the change in the mother's mood over time,
+              without revealing the specifics of the mother's journal entries unnecessarily.</p>
+
+          <h2>Architecture</h2>
+          <p><img src="../images/architecture.png"></p>
+          <h4>Mae AWS Lambda</h4>
+          <p>The Mae Echo activity calls to the Mae AWS Lambda to provide its functionality. The AWS Lambda interfaces with Alexa and the Mae backend.
+              It takes text input from journal type activities and sends
+              to Mae backend to be recorded and receive advice for client. Advice is returned to client. For metric type recordings,
+              metrics are sent to Mae backend and a generic response is returned based on metric type. </p>
+          <h4>Mae Backend</h4>
+          <p>The Mae backend is a set of REST APIs implemented in Java, running on the Heroku PAAS.
+              These APIs are available for the Web application and the Alexa application to call as needed. </p>
+          <h4></h4>
+          <p>Mae uses the Personality Insights API from IBM Watson.
+              The reference for this API is available here:<a href="http://www.ibm.com/watson/developercloud/personality-insights/api/v2/"></a>
+              For more information on how Mae uses the Personality Insights API, see "How Mae Provides User-Specific Advice" section above.</p>
+      </div>
+
+      <!-- Site footer -->
+      <footer class="footer">
+        <p> 2016 - University of Texas at Austin </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body></html>
