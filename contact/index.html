@@ -63,7 +63,7 @@
       <div class="contact-container">
         <div class="container">
 
-          <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+          <form class="well form-horizontal" action="" method="post"  id="contact_form">
             <fieldset>
 
               <!-- Form Name -->
@@ -75,7 +75,7 @@
                 <div class="col-md-10 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input  name="first_name" placeholder="Name" class="form-control"  type="text">
+                    <input id="name" name="name" placeholder="Name" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
@@ -86,7 +86,7 @@
                 <div class="col-md-10 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon">@</span>
-                    <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+                    <input id="email" name="email" placeholder="E-Mail Address" class="form-control"  type="text">
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@
                 <div class="col-md-10 inputGroupContainer">
                   <div class="input-group">
                     <span class="input-group-addon txt"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <textarea class="form-control" name="comment" placeholder="Your Message" rows="4"></textarea>
+                    <textarea id="textarea" class="form-control" name="comment" placeholder="Your Message" rows="4"></textarea>
                   </div>
                 </div>
               </div>
@@ -105,11 +105,14 @@
               <!-- Success message -->
               <div class="alert alert-success" role="alert" id="success_message">Success <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Thanks for contacting us, we will get back to you shortly.</div>
 
+              <!-- Error message -->
+               <div class="alert alert-danger" role="alert" id="error_message">Error <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> All fields are required.</div>
+
               <!-- Button -->
               <div class="form-group">
                 <label class="col-md-8 control-label"></label>
                 <div class="col-md-12">
-                  <button type="submit" class="btn btn-success btn-lg" >Send <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                  <button id="submit-contact" type="submit" class="btn btn-success btn-lg" >Send <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
                 </div>
               </div>
 
@@ -128,7 +131,39 @@
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+    <script type="text/javascript">
+    $( document ).ready(function() {
+        $('#contact_form').submit(function(event) {
+
+          var $form = $(this);
+          $('#submit-contact').find('button').prop('disabled', true);
+          $("#error_message").fadeOut();
+          $("#success_message").fadeOut();
+          $.ajax({
+            url: '../inc/contact.php',
+            type:'post',
+            async:'false',
+            data: jQuery($form).serialize(),
+            dataType: 'json',
+            success:function(ret){
+              if(ret.errors){
+                $("#error_message").fadeIn();
+              }else{
+                $("#success_message").fadeIn();
+                $("#name").val("");
+                $("#email").val("");
+                $("#textarea").val(""); 
+              }
+              $('#submit-contact').find('button').prop('disabled', false);
+            }
+          });
+
+          // Prevent the form from submitting with the default action
+          return false;
+        });
+    });
+    </script>
 
   </body>
 </html>

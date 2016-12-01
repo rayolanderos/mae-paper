@@ -79,7 +79,12 @@ a {
   border-radius: 0 0 5px 5px;
 }
 /* Contact Form */
-#success_message{ display: none;}
+#success_message, #error_message{ display: none;}
+.alert-error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #a77777;
+}
 .input-group-addon.txt {
     vertical-align: top;
     padding-top: 8px;
